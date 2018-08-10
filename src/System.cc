@@ -489,4 +489,9 @@ vector<cv::KeyPoint> System::GetTrackedKeyPointsUn()
     return mTrackedKeyPointsUn;
 }
 
+void System::SaveMap(const string &filename)
+{
+    mpMap->Save(filename);
+}
+
 } //namespace ORB_SLAM

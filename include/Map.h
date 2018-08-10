@@ -24,7 +24,7 @@
 #include "MapPoint.h"
 #include "KeyFrame.h"
 #include <set>
-
+#include <string>
 #include <mutex>
 
 
@@ -66,6 +66,9 @@ public:
     // This avoid that two points are created simultaneously in separate threads (id conflict)
     std::mutex mMutexPointCreation;
 
+    // 保存地图点和关键帧
+    void Save( const string &filename );
+
 protected:
     std::set<MapPoint*> mspMapPoints;
     std::set<KeyFrame*> mspKeyFrames;
@@ -78,6 +81,15 @@ protected:
     int mnBigChangeIdx;
 
     std::mutex mMutexMap;
+
+    // Save的子函数，用于保存每一个地图点和每一个关键帧
+    void SaveMapPoint( ofstream &f, MapPoint* mp );
+    void SaveKeyFrame( ofstream &f, KeyFrame* kf );
+
+    // 在保存地图的过程中，需要给地图点编号（原本地图点存在集合里，没有编号）
+    std::map<MapPoint*, unsigned long int> mmpnMapPointsIdx;
+    void GetMapPointsIdx();
+
 };
 
 } //namespace ORB_SLAM

@@ -114,6 +114,7 @@ public:
 
     // TODO: Save/Load functions
     // SaveMap(const string &filename);
+    void SaveMap(const string &filename);
     // LoadMap(const string &filename);
 
     // Information from most recent processed frame
@@ -174,6 +175,7 @@ private:
     std::vector<MapPoint*> mTrackedMapPoints;
     std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
     std::mutex mMutexState;
+
 };
 
 }// namespace ORB_SLAM
