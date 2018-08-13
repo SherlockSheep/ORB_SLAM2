@@ -375,6 +375,7 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
 {
     //声明一个初始化关键帧的类initkf；
     InitKeyFrame initkf(*mySystemSetting);
+    cerr<<"inikf created successfully"<<endl;
 
     //按照保存次序，依次读取关键帧的ID和时间戳；
     f.read((char*)&initkf.nId, sizeof(initkf.nId));
@@ -402,6 +403,11 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
     //              cerr<<"T.at<float>("<<i<<","<<j<<"):"<<T.at<float>(i,j)<<endl;
     //      }
     //    }
+
+
+    // debug
+    cerr<<"debug1"<<endl;
+
 
     //读取当前关键帧特征点的数目；
     f.read((char*)&initkf.N, sizeof(initkf.N));
@@ -444,6 +450,10 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
         else
             vpMapPoints[i] = vmp[mpidx];
     }
+
+    // debug
+    cerr<<"debug2"<<endl;
+
 
     initkf.vRight = vector<float>(initkf.N,-1);
     initkf.vDepth = vector<float>(initkf.N,-1);
