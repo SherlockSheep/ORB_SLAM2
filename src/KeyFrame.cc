@@ -23,6 +23,7 @@
 #include "ORBmatcher.h"
 #include "InitKeyFrame.h"
 #include<mutex>
+#include <iomanip>
 
 namespace ORB_SLAM2
 {
@@ -78,11 +79,16 @@ KeyFrame::KeyFrame(InitKeyFrame &initkf, Map *pMap, KeyFrameDatabase *pKFDB, vec
 
 void KeyFrame::ComputeBoW()
 {
+    //debug
+    cerr<<"debug1"<<endl;
+
     if(mBowVec.empty() || mFeatVec.empty())
     {
         vector<cv::Mat> vCurrentDesc = Converter::toDescriptorVector(mDescriptors);
         // Feature vector associate features with nodes in the 4th level (from leaves up)
         // We assume the vocabulary tree has 6 levels, change the 4 otherwise
+        //debug
+        cerr<<"debug2"<<endl;
         mpORBvocabulary->transform(vCurrentDesc,mBowVec,mFeatVec,4);
     }
 }

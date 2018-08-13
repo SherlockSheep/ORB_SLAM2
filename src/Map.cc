@@ -375,7 +375,6 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
 {
     //声明一个初始化关键帧的类initkf；
     InitKeyFrame initkf(*mySystemSetting);
-    cerr<<"inikf created successfully"<<endl;
 
     //按照保存次序，依次读取关键帧的ID和时间戳；
     f.read((char*)&initkf.nId, sizeof(initkf.nId));
@@ -403,11 +402,6 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
     //              cerr<<"T.at<float>("<<i<<","<<j<<"):"<<T.at<float>(i,j)<<endl;
     //      }
     //    }
-
-
-    // debug
-    cerr<<"debug1"<<endl;
-
 
     //读取当前关键帧特征点的数目；
     f.read((char*)&initkf.N, sizeof(initkf.N));
@@ -451,37 +445,17 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
             vpMapPoints[i] = vmp[mpidx];
     }
 
-    // debug
-    cerr<<"debug2"<<endl;
-
-
     initkf.vRight = vector<float>(initkf.N,-1);
     initkf.vDepth = vector<float>(initkf.N,-1);
     //initkf.vDepth = KeypointDepth;
     initkf.UndistortKeyPoints();
     initkf.AssignFeaturesToGrid();
 
-
-    // debug
-    cerr<<"debug3"<<endl;
-
     //使用initkf初始化一个关键帧，并设置相关参数
     KeyFrame* kf = new KeyFrame( initkf, this, NULL, vpMapPoints );
-    // debug
-    cerr<<"debug3.1"<<endl;
-
     kf->mnId = initkf.nId;
-    // debug
-    cerr<<"debug3.2"<<endl;
-
     kf->SetPose(T);
-    // debug
-    cerr<<"debug3.3"<<endl;
-
     kf->ComputeBoW();
-
-    // debug
-    cerr<<"debug4"<<endl;
 
     for ( int i = 0; i < initkf.N; i ++ )
     {
