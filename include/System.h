@@ -130,7 +130,7 @@ private:
     eSensor mSensor;
 
     // SettingFile
-    std::string mySettingsFile;
+    SystemSetting* mySystemSetting;
 
     // ORB vocabulary used for place recognition and feature matching.
     ORBVocabulary* mpVocabulary;

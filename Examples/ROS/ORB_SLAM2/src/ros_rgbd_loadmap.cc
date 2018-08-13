@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true);
 
     // Load previous map from file
-    SLAM.LoadMap(argv[3],SLAM.mySettingsFile);
+    SLAM.LoadMap(argv[3],SLAM.mySystemSetting);
 
     ImageGrabber igb(&SLAM);
 

@@ -56,7 +56,8 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
        cerr << "Failed to open settings file at: " << strSettingsFile << endl;
        exit(-1);
     }
-    mySettingsFile = strSettingsFile;
+    mySystemSetting = new SystemSetting(this->mpVocabulary);
+    mySystemSetting->LoadSystemSetting(strSettingsFile.c_str());
 
     //Load ORB Vocabulary
     cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
