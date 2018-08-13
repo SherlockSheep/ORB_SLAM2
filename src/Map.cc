@@ -467,8 +467,17 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
 
     //使用initkf初始化一个关键帧，并设置相关参数
     KeyFrame* kf = new KeyFrame( initkf, this, NULL, vpMapPoints );
+    // debug
+    cerr<<"debug3.1"<<endl;
+
     kf->mnId = initkf.nId;
+    // debug
+    cerr<<"debug3.2"<<endl;
+
     kf->SetPose(T);
+    // debug
+    cerr<<"debug3.3"<<endl;
+
     kf->ComputeBoW();
 
     // debug
