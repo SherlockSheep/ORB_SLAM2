@@ -26,7 +26,7 @@
 #include <set>
 #include <string>
 #include <mutex>
-
+#include "InitKeyFrame.h"
 
 
 namespace ORB_SLAM2
@@ -68,6 +68,8 @@ public:
 
     // 保存地图点和关键帧
     void Save( const string &filename );
+    void Load( const string &filename, SystemSetting* mySystemSetting );
+
 
 protected:
     std::set<MapPoint*> mspMapPoints;
@@ -86,9 +88,14 @@ protected:
     void SaveMapPoint( ofstream &f, MapPoint* mp );
     void SaveKeyFrame( ofstream &f, KeyFrame* kf );
 
+    // Load的子函数，用于读取每一个地图点和每一个关键帧
+    MapPoint* LoadMapPoint( ifstream &f );
+    KeyFrame* LoadKeyFrame( ifstream &f, SystemSetting* mySystemSetting );
+
     // 在保存地图的过程中，需要给地图点编号（原本地图点存在集合里，没有编号）
     std::map<MapPoint*, unsigned long int> mmpnMapPointsIdx;
     void GetMapPointsIdx();
+
 
 };
 

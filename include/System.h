@@ -35,6 +35,7 @@
 #include "KeyFrameDatabase.h"
 #include "ORBVocabulary.h"
 #include "Viewer.h"
+#include "SystemSetting.h"
 
 namespace ORB_SLAM2
 {
@@ -115,7 +116,7 @@ public:
     // TODO: Save/Load functions
     // SaveMap(const string &filename);
     void SaveMap(const string &filename);
-    // LoadMap(const string &filename);
+    void LoadMap(const string &filename, SystemSetting* mySystemSetting);
 
     // Information from most recent processed frame
     // You can call this right after TrackMonocular (or stereo or RGBD)
@@ -127,6 +128,9 @@ private:
 
     // Input sensor
     eSensor mSensor;
+
+    // SettingFile
+    std::string mySettingsFile;
 
     // ORB vocabulary used for place recognition and feature matching.
     ORBVocabulary* mpVocabulary;

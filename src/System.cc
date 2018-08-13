@@ -56,7 +56,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
        cerr << "Failed to open settings file at: " << strSettingsFile << endl;
        exit(-1);
     }
-
+    mySettingsFile = strSettingsFile;
 
     //Load ORB Vocabulary
     cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
@@ -494,4 +494,8 @@ void System::SaveMap(const string &filename)
     mpMap->Save(filename);
 }
 
+void System::LoadMap(const string &filename,SystemSetting* mySystemSetting)
+{
+    mpMap->Load(filename, mySystemSetting);
+}
 } //namespace ORB_SLAM

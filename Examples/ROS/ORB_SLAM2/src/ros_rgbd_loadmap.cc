@@ -1,3 +1,6 @@
+//
+// Created by 马艳阳 on 2018/8/13.
+//
 /**
 * This file is part of ORB-SLAM2.
 *
@@ -51,16 +54,18 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "RGBD");
     ros::start();
 
-    if(argc != 3)
+    if(argc != 4)
     {
-        cerr << endl << "Usage: rosrun ORB_SLAM2 RGBD path_to_vocabulary path_to_settings" << endl;        
+        cerr << endl << "Usage: rosrun ORB_SLAM2 RGBD path_to_vocabulary path_to_settings path_to_mapfile" << endl;
         ros::shutdown();
         return 1;
-    }    
+    }
 
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true);
 
+    // Load previous map from file
+    SLAM.LoadMap(argv[3]);
 
     ImageGrabber igb(&SLAM);
 

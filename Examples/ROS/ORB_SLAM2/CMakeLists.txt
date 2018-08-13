@@ -98,3 +98,12 @@ target_link_libraries(RGBD
 ${LIBS}
 )
 
+# Node for RGB-D camera
+rosbuild_add_executable(RGBD_loadmap
+        src/ros_rgbd_loadmap.cc
+        )
+
+target_link_libraries(RGBD_loadmap
+        ${LIBS}
+        )
+
