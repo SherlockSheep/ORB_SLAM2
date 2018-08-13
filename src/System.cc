@@ -495,8 +495,8 @@ void System::SaveMap(const string &filename)
     mpMap->Save(filename);
 }
 
-void System::LoadMap(const string &filename,SystemSetting* mySystemSetting)
+void System::LoadMap(const string &filename)
 {
-    mpMap->Load(filename, mySystemSetting);
+    mpMap->Load(filename, this->mySystemSetting);
 }
 } //namespace ORB_SLAM

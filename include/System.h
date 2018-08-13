@@ -116,7 +116,7 @@ public:
     // TODO: Save/Load functions
     // SaveMap(const string &filename);
     void SaveMap(const string &filename);
-    void LoadMap(const string &filename, SystemSetting* mySystemSetting);
+    void LoadMap(const string &filename);
 
     // Information from most recent processed frame
     // You can call this right after TrackMonocular (or stereo or RGBD)
