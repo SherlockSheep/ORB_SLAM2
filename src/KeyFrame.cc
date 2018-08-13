@@ -23,7 +23,7 @@
 #include "ORBmatcher.h"
 #include "InitKeyFrame.h"
 #include<mutex>
-#include <iomanip>
+
 namespace ORB_SLAM2
 {
 
@@ -85,7 +85,7 @@ void KeyFrame::ComputeBoW()
         // We assume the vocabulary tree has 6 levels, change the 4 otherwise
         mpORBvocabulary->transform(vCurrentDesc,mBowVec,mFeatVec,4);
         //debug
-        cerr<<"debug1"<<endl;
+        cerr<<"debug: computebow"<<endl;
     }
 }
 
