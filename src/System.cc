@@ -56,8 +56,6 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
        cerr << "Failed to open settings file at: " << strSettingsFile << endl;
        exit(-1);
     }
-    mySystemSetting = new SystemSetting(this->mpVocabulary);
-    mySystemSetting->LoadSystemSetting(strSettingsFile.c_str());
 
     //Load ORB Vocabulary
     cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
@@ -112,6 +110,9 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
 
     mpLoopCloser->SetTracker(mpTracker);
     mpLoopCloser->SetLocalMapper(mpLocalMapper);
+
+    mySystemSetting = new SystemSetting(mpVocabulary);
+    mySystemSetting->LoadSystemSetting(strSettingsFile.c_str());
 }
 
 cv::Mat System::TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp)
