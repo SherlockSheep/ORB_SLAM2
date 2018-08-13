@@ -250,7 +250,7 @@ void Map::SaveKeyFrame(ofstream &f, ORB_SLAM2::KeyFrame *kf)
             f.write((char*)&kf->mDescriptors.at<unsigned char>(i,j), sizeof(char));
 
         //debug
-        cerr<<"mDescriptors.cols: "<<endl;
+        cerr<<"mDescriptors.cols: "<<kf->mDescriptors.cols<<endl;
 
         //保存当前ORB特征对应的MapPoints的索引值
         unsigned long int mnIdx;
