@@ -461,11 +461,18 @@ KeyFrame* Map::LoadKeyFrame(ifstream &f, SystemSetting *mySystemSetting)
     initkf.UndistortKeyPoints();
     initkf.AssignFeaturesToGrid();
 
+
+    // debug
+    cerr<<"debug3"<<endl;
+
     //使用initkf初始化一个关键帧，并设置相关参数
     KeyFrame* kf = new KeyFrame( initkf, this, NULL, vpMapPoints );
     kf->mnId = initkf.nId;
     kf->SetPose(T);
     kf->ComputeBoW();
+
+    // debug
+    cerr<<"debug4"<<endl;
 
     for ( int i = 0; i < initkf.N; i ++ )
     {
