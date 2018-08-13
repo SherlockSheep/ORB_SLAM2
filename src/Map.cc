@@ -289,6 +289,7 @@ void Map::Load(const string &filename, SystemSetting *mySystemSetting)
         AddMapPoint(mp);
     }
 
+    cerr<<"MapPoint Load OVER!"<<endl;
     //获取所有的MapPoints；
     std::vector<MapPoint*> vmp = GetAllMapPoints();
 
@@ -304,6 +305,7 @@ void Map::Load(const string &filename, SystemSetting *mySystemSetting)
         KeyFrame* kf = LoadKeyFrame(f, mySystemSetting);
         AddKeyFrame(kf);
         kf_by_order.push_back(kf);
+        cerr<<"Loaded KeyFrame No."<<i<<endl;
     }
 
     cerr<<"KeyFrame Load OVER!"<<endl;
